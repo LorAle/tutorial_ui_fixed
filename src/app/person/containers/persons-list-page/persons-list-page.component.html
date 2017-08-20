@@ -1,0 +1,17 @@
+<md-toolbar>
+  <button md-button (click)="loadPersons()">
+        Refresh!
+      </button>
+  <a md-button routerLink="add">
+        Create a person
+      </a>
+</md-toolbar>
+<md-card>
+  <md-card-title>
+    All the persons
+  </md-card-title>
+  <md-card-subtitle>Created persons are displayed</md-card-subtitle>
+  <md-card-content>
+    <app-persons-table [data]="persons$ | async" (onDelete)="handleDelete($event)" (onSelect)="handleSelect($event)"></app-persons-table>
+  </md-card-content>
+</md-card>

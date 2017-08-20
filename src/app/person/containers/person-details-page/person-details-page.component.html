@@ -1,0 +1,36 @@
+<ng-container *ngIf="personData$ | async as personData">
+  <md-toolbar>
+      <nav fxFlex md-tab-nav-bar>
+          <a fxFlex md-tab-link routerLink="./" 
+          [routerLinkActiveOptions]="{exact: true}" 
+          routerLinkActive #rls="routerLinkActive" 
+          [active]="rls.isActive">
+            Start
+          </a>
+          <a fxFlex md-tab-link routerLink="addresses" 
+          [routerLinkActiveOptions]="{exact: true}" 
+          routerLinkActive #rla="routerLinkActive"
+            [active]="rla.isActive">
+            Addresses
+          </a>
+        </nav>
+  </md-toolbar>
+  <md-card [tdToggle]="!rls.isActive">
+    <md-card-title>Person details</md-card-title>
+    <md-card-subtitle>Total addresses: {{(person$ | async)?.totalAddresses}}</md-card-subtitle>
+    <md-card-content>
+      <app-person-form #personForm (valid)="handleValid($event)" [person]="personData"></app-person-form>
+    </md-card-content>
+    <md-card-actions>
+      <button md-raised-button color="primary" [disabled]="!(valid$ | async)" (click)="handleSubmit(personForm.person)">
+          <md-icon>edit</md-icon>
+          <span>Update!</span>
+        </button>
+      <a md-raised-button color="accent" routerLink="../">
+          <md-icon>undo</md-icon>
+          <span>Back</span>
+      </a>
+    </md-card-actions>
+  </md-card>
+  <router-outlet></router-outlet>
+</ng-container>

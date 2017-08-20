@@ -1,0 +1,23 @@
+<md-card>
+    <md-card-title>New person</md-card-title>
+    <md-card-subtitle>Fill the form and submit</md-card-subtitle>
+    <md-divider></md-divider>
+    <md-card-content>
+        <app-person-form #personForm (valid)="handleValid($event)"></app-person-form>
+    </md-card-content>
+    <md-divider></md-divider>
+    <md-card-actions>
+        <button md-raised-button color="primary" (click)="handleSubmit(personForm.person)" [disabled]="!(valid$ | async)">
+            <md-icon>send</md-icon>
+            <span>Create</span>
+        </button>
+        <button md-raised-button color="accent"  (click)="goBack()">
+            <md-icon>undo</md-icon>
+            <span>Go back</span>
+        </button>
+        <a md-raised-button color="accent" routerLink="..">
+            <md-icon>list</md-icon>
+            <span>To persons table</span>
+        </a>
+    </md-card-actions>
+</md-card>

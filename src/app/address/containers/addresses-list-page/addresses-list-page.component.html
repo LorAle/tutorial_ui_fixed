@@ -1,0 +1,19 @@
+<md-toolbar>
+  <button md-button (click)="loadAddresses()">
+    Refresh!
+  </button>
+  <a md-button routerLink="../add">
+    Create a Address for this Person
+  </a>
+</md-toolbar>
+<md-card>
+  <md-card-title>
+    All the Addresses of this Person
+  </md-card-title>
+  <md-card-subtitle>
+    Created Addresses are displayed
+  </md-card-subtitle>
+  <md-card-content>
+    <app-addresses-table [data]="addresses$ | async" (onDelete)="handleDelete($event)" (onSelect)="handleSelect($event)"></app-addresses-table>
+  </md-card-content>
+</md-card>

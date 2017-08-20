@@ -1,0 +1,19 @@
+<ng-container *ngIf="addresses$ | async as addressData">
+   <md-card>
+    <md-card-title>Address details</md-card-title>
+    <md-card-subtitle>PersonID und firstName vll.</md-card-subtitle>
+    <md-card-content>
+      <app-address-form #addressForm (valid)="handleValid($event)" [address]="address"></app-address-form>
+    </md-card-content>
+    <md-card-actions>
+      <button md-raised-button color="primary" [disabled]="!(valid$ | async)" (click)="handleSubmit(addressForm.address)">
+          <md-icon>edit</md-icon>
+          <span>Update!</span>
+        </button>
+      <a md-raised-button color="accent" routerLink="../">
+          <md-icon>undo</md-icon>
+          <span>Back</span>
+      </a>
+    </md-card-actions>
+  </md-card>
+</ng-container>
