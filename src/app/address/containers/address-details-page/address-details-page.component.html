@@ -1,7 +1,7 @@
 <ng-container *ngIf="addresses$ | async as addressData">
    <md-card>
     <md-card-title>Address details</md-card-title>
-    <md-card-subtitle>PersonID und firstName vll.</md-card-subtitle>
+    <md-card-subtitle>PersonID und firstName vielleicht hinzufügen</md-card-subtitle>
     <md-card-content>
       <app-address-form #addressForm (valid)="handleValid($event)" [address]="address"></app-address-form>
     </md-card-content>
